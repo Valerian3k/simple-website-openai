@@ -2,16 +2,19 @@ import openai
 
 
 def read_file(filepath):
+    # Reads the contents of a text file.
     with open(filepath, 'r', encoding='utf-8') as file:
         return file.read()
 
 
 def save_to_html(filename, content):
+    # Saves a string to an HTML file.
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(content)
 
 
 def get_user_input_for_images(article):
+    # Allows the user to specify where to insert images into the article.
     images_info = []
 
     while True:
@@ -48,6 +51,7 @@ def get_user_input_for_images(article):
 
 
 def process_text(api_key, prompt):
+    # Sends a prompt to the OpenAI API and retrieves the generated content.
     openai.api_key = api_key
     response = openai.chat.completions.create(
         model="gpt-4",
@@ -60,12 +64,98 @@ def process_text(api_key, prompt):
     return response.choices[0].message.content
 
 
+def create_empty_template(output_path):
+    # Creates an empty HTML template with basic styling for the article.
+
+    template = """<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szablon Artykułu</title>
+    <style>
+        body {
+            font-family: Lato, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 0 5%;
+        }
+        
+        h1, h2, h3, h4 {
+            color: #1e90ff;
+            text-align: center;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        figcaption {
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 10px 0 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>"""
+    with open(output_path, 'w', encoding='utf-8') as file:
+        file.write(template)
+    print(f"Empty template saved to: {output_path}")
+
+
+def generate_full_preview(template_path, article_path, output_path):
+    # Combines an article with an HTML template to create a full preview.
+
+    with open(template_path, 'r', encoding='utf-8') as template_file:
+        template = template_file.read()
+
+    with open(article_path, 'r', encoding='utf-8') as article_file:
+        article_content = article_file.read()
+
+    placeholder = "<body>"
+    if placeholder in template:
+        preview_content = template.replace(
+            placeholder, f"<body>\n\n{article_content}"
+        )
+    else:
+        raise ValueError("Placeholder not found in the template!")
+
+    with open(output_path, 'w', encoding='utf-8') as output_file:
+        output_file.write(preview_content)
+
+    print(f"Full preview generated and saved to: {output_path}")
+
+
 def main():
     api_key = ""
     input_filepath = "artykul.txt"
-    output_filepath = "artykul.html"
+    article_output_filepath = "artykul.html"
+    template_output_filepath = "szablon.html"
+    preview_output_filepath = "podglad.html"
 
     article = read_file(input_filepath)
+
     images_info = get_user_input_for_images(article)
 
     prompt = f"""
@@ -91,8 +181,12 @@ def main():
     print("Sending data to the API...")
     html_content = process_text(api_key, prompt)
 
-    save_to_html(output_filepath, html_content)
-    print(f"Result saved to: {output_filepath}")
+    save_to_html(article_output_filepath, html_content)
+    print(f"Result saved to: {article_output_filepath}")
+
+    create_empty_template(template_output_filepath)
+
+    generate_full_preview(template_output_filepath, article_output_filepath, preview_output_filepath)
 
 
 if __name__ == "__main__":
