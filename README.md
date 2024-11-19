@@ -16,16 +16,38 @@
   
 ### Instrukcje:
 
-1. **Zainstaluj wymagane biblioteki**:
-   Użyj `pip install openai` w terminalu, aby zainstalować bibliotekę OpenAI.
+1. **Utwórz środowisko wirtualne**:
+   - Na Windows:
+     ```bash
+     python -m venv venv
+     ```
+   - Na macOS/Linux:
+     ```bash
+     python3 -m venv venv
+     ```
 
-2. **Dodaj klucz API OpenAI**:
+2. **Aktywuj środowisko wirtualne**:
+   - Na Windows:
+     ```bash
+     .\venv\Scripts\activate
+     ```
+   - Na macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+
+3. **Zainstaluj wymagane biblioteki**:
+   Użyj poniższego polecenia, aby zainstalować wszystkie wymagane zależności:
+   ```bash
+   pip install -r requirements.txt
+
+4. **Dodaj klucz API OpenAI**:
    Wprowadź klucz API do zmiennej `api_key` w kodzie.
 
-3. **Uruchom aplikację**:
+5. **Uruchom aplikację**:
    Zainstalowane biblioteki i dodanie klucza pozwoli na uruchomienie aplikacji.
 
-4. **Generowanie plików HTML**:
+6. **Generowanie plików HTML**:
    Aplikacja automatycznie wygeneruje pliki HTML, które można wykorzystać do podglądu artykułu w przeglądarce.
 
 <br><br>
@@ -48,15 +70,38 @@
   
 ### Instructions:
 
-1. **Install Required Libraries**:
-   Use `pip install openai` in the terminal to install the OpenAI library.
+1. **Create a Virtual Environment**:
+   - On Windows:
+     ```bash
+     python -m venv venv
+     ```
+   - On macOS/Linux:
+     ```bash
+     python3 -m venv venv
+     ```
 
-2. **Add OpenAI API Key**:
+2. **Activate the Virtual Environment**:
+   - On Windows:
+     ```bash
+     .\venv\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+
+3. **Install Required Libraries**:
+   Use the following command to install all required dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+
+4. **Add OpenAI API Key**:
    Enter your OpenAI API key into the `api_key` variable in the code.
 
-3. **Run the Application**:
+5. **Run the Application**:
    Once the libraries are installed and the API key is added, you can run the application.
 
-4. **Generate HTML Files**:
+6. **Generate HTML Files**:
    The application will automatically generate HTML files that can be used to preview the article in a web browser.
 
