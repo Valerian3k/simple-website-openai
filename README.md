@@ -39,7 +39,7 @@
 3. **Zainstaluj wymagane biblioteki**:
    Użyj poniższego polecenia, aby zainstalować wszystkie wymagane zależności:
    ```bash
-   pip install -r requirements.txt
+   pip install openai
 
 4. **Dodaj klucz API OpenAI**:
    Wprowadź klucz API do zmiennej `api_key` w kodzie.
@@ -93,8 +93,7 @@
 3. **Install Required Libraries**:
    Use the following command to install all required dependencies:
    ```bash
-   pip install -r requirements.txt
-
+   pip install openai
 
 4. **Add OpenAI API Key**:
    Enter your OpenAI API key into the `api_key` variable in the code.
