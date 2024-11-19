@@ -1,4 +1,4 @@
-# Prostra strona OpenAI [PL]
+# Prostra Strona OpenAI [PL]
 
 ## Funkcje
 
@@ -23,7 +23,40 @@
    Wprowadź klucz API do zmiennej `api_key` w kodzie.
 
 3. **Uruchom aplikację**:
-   Zainstalowane biblioteki i dodanie pliku artykułu (`artykul.txt`) pozwolą na uruchomienie aplikacji poprzez `python app.py`.
+   Zainstalowane biblioteki i dodanie klucza pozwoli na uruchomienie aplikacji.
 
 4. **Generowanie plików HTML**:
    Aplikacja automatycznie wygeneruje pliki HTML, które można wykorzystać do podglądu artykułu w przeglądarce.
+
+<br><br>
+
+# Simple Page OpenAI [EN]
+
+## Features
+
+- **OpenAI API Integration**: The application sends the article and prompt to the OpenAI API to receive a response in the form of HTML code.
+- **Adding Images**: Users can specify where they want to add images in the article and provide an alt description for each image.
+- **HTML Template**: The program creates an empty HTML template, which is then customized to the final page appearance.
+- **Preview Generation**: The application generates a preview of the final article using the empty HTML template.
+
+## How to Use
+
+### Requirements
+
+- **Python 3.x**: The application runs on Python version 3.
+- **OpenAI Library**: You need to install the OpenAI library for the application to connect to the API.
+  
+### Instructions:
+
+1. **Install Required Libraries**:
+   Use `pip install openai` in the terminal to install the OpenAI library.
+
+2. **Add OpenAI API Key**:
+   Enter your OpenAI API key into the `api_key` variable in the code.
+
+3. **Run the Application**:
+   Once the libraries are installed and the API key is added, you can run the application.
+
+4. **Generate HTML Files**:
+   The application will automatically generate HTML files that can be used to preview the article in a web browser.
+
